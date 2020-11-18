@@ -1,0 +1,39 @@
+<div class="text-center">
+  <form class="form-signin" #order="ngForm">
+    <div *ngFor="let field of formFields">
+      <div class="form-row">
+        <div class="col form-group">
+          <label for="{{ field.id }}">{{ field.label }} </label>
+          <input
+            *ngIf="field.id != 'contractText'"
+            type="text"
+            class="form-control"
+            name="{{ field.id }}"
+            value="{{ field.value.value }}"
+            readonly
+          />
+          <textarea
+            *ngIf="field.id == 'contractText'"
+            readonly
+            class="form-control">
+            {{ field.value.value }}
+          </textarea>
+        </div>
+      </div>
+    </div>
+    <input
+      type="submit"
+      id="buttonAccept"
+      class="btn btn-lg btn-primary"
+      value="Accept"
+      (click)="decide(true)"
+    />
+    <input
+      type="submit"
+      id="buttonRefuse"
+      class="btn btn-lg btn-primary btn-danger"
+      value="Refuse"
+      (click)="decide(false)"
+    />
+  </form>
+</div>

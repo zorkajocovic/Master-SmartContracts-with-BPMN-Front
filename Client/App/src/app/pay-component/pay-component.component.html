@@ -1,9 +1,5 @@
 <div class="text-center">
-  <form
-    class="form-signin"
-    #order="ngForm"
-    (ngSubmit)="orderCar(order.value, order)"
-  >
+  <form class="form-signin" #payForm="ngForm">
     <div *ngFor="let field of formFields">
       <div class="form-row">
         <div class="col form-group">
@@ -12,17 +8,18 @@
             type="text"
             class="form-control"
             name="{{ field.id }}"
-            ngModel
+            value="{{ field.value.value }}"
+            readonly
           />
         </div>
       </div>
     </div>
     <input
       type="submit"
-      id="button"
-      class="btn btn-lg btn-primary btn-block"
-      value="Send"
+      id="btnPay"
+      class="btn btn-lg btn-primary"
+      value="Pay"
+      (click)="pay()"
     />
-    <p class="mt-5 mb-3 text-muted">© 2020</p>
   </form>
 </div>

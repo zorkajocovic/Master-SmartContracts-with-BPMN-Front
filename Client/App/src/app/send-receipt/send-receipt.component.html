@@ -1,0 +1,30 @@
+<div class="text-center">
+    <form
+      class="form-signin"
+      #order="ngForm"
+      (ngSubmit)="send(order.value, order)"
+    >
+      <div *ngFor="let field of formFields">
+        <div class="form-row">
+          <div class="col form-group">
+            <label for="{{ field.id }}">{{ field.label }} </label>
+            <input
+              id="cbx"
+              type="checkbox"
+              class="form-control"
+              name="{{ field.id }}"
+              value="{{ field.value }}"
+              ngModel
+            />
+          </div>
+        </div>
+      </div>
+      <input
+        type="submit"
+        id="btnSend"
+        class="btn btn-lg btn-primary"
+        value="Send"
+      />
+    </form>
+  </div>
+  

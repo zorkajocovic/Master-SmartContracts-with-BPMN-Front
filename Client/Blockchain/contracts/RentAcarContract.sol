@@ -12,11 +12,19 @@ contract RentAcarContract {
         customerName = "Zorka";
         customerSurname = "Jocovic";
         price = 10;
+        dealerCompanyName = "";
     }
 
     function getPrice() public view returns(string memory){
         return customerName;
     }
+//kupac treba da potvrdi cijenu i time se odobrava contract
+    function acceptPrice() public view returns(bool memory){
+        return true;
+    }
+
+//dealer potvrdjuje da je placeno
+
 
   
 }

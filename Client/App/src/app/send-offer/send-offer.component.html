@@ -2,7 +2,7 @@
   <form
     class="form-signin"
     #order="ngForm"
-    (ngSubmit)="orderCar(order.value, order)"
+    (ngSubmit)="sendOffer(order.value, order)"
   >
     <div *ngFor="let field of formFields">
       <div class="form-row">
@@ -12,6 +12,15 @@
             type="text"
             class="form-control"
             name="{{ field.id }}"
+            *ngIf="field.id != 'contractText' && field.id != 'price'"
+            value="{{ field.value.value }}"
+            readonly
+          />
+          <input
+            type="text"
+            class="form-control"
+            name="{{ field.id }}"
+            *ngIf="field.id == 'contractText' || field.id == 'price'"
             ngModel
           />
         </div>
@@ -23,6 +32,5 @@
       class="btn btn-lg btn-primary btn-block"
       value="Send"
     />
-    <p class="mt-5 mb-3 text-muted">© 2020</p>
   </form>
 </div>

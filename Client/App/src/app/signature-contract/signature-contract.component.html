@@ -1,0 +1,27 @@
+<div class="text-center">
+    <form class="form-signin" #order="ngForm">
+      <div *ngFor="let field of formFields">
+        <div class="form-row">
+          <div class="col form-group">
+            <label for="{{ field.id }}">{{ field.label }} </label>
+            <input
+              type="text"
+              class="form-control"
+              name="{{ field.id }}"
+              value="{{ field.value.value }}"
+              readonly
+            />
+          </div>
+        </div>
+      </div>
+      <input
+        type="submit"
+        id="btnSign"
+        class="btn btn-lg btn-primary"
+        value="Sign"
+        (click)="sign()"
+      />
+    
+    </form>
+  </div>
+  

@@ -2,16 +2,18 @@
   <form
     class="form-signin"
     #order="ngForm"
-    (ngSubmit)="orderCar(order.value, order)"
+    (ngSubmit)="send(order.value, order)"
   >
     <div *ngFor="let field of formFields">
       <div class="form-row">
         <div class="col form-group">
           <label for="{{ field.id }}">{{ field.label }} </label>
           <input
-            type="text"
+            id="cbx"
+            type="checkbox"
             class="form-control"
             name="{{ field.id }}"
+            value="{{ field.value }}"
             ngModel
           />
         </div>
@@ -19,10 +21,9 @@
     </div>
     <input
       type="submit"
-      id="button"
-      class="btn btn-lg btn-primary btn-block"
+      id="btnSend"
+      class="btn btn-lg btn-primary"
       value="Send"
     />
-    <p class="mt-5 mb-3 text-muted">© 2020</p>
   </form>
 </div>
