@@ -24,7 +24,6 @@ export class LoginService {
   }
 
   getTheToken(user) {
-    debugger;
     let headers = new HttpHeaders();
     headers = headers.append("Content-type", "application/json");
 

@@ -28,7 +28,6 @@ export class OrderCarComponent implements OnInit {
     
     let x = this.camundaService.startClientProcess().subscribe(
       res => {
-        debugger
         this.formFieldsDto = res;
         this.formFields = res.formField;
         this.processInstance = res.processInstanceId;

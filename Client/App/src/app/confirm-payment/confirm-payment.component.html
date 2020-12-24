@@ -1,10 +1,15 @@
 <div class="text-center">
-    <form class="form-signin" #order="ngForm">
+    <form
+      class="form-signin"
+      #order="ngForm"
+      (ngSubmit)="confirm(order.value, order)"
+    >
       <div *ngFor="let field of formFields">
         <div class="form-row">
           <div class="col form-group">
             <label for="{{ field.id }}">{{ field.label }} </label>
-            <input id="input"
+            <input
+              id="input"
               type="text"
               class="form-control"
               name="{{ field.id }}"
@@ -16,10 +21,9 @@
       </div>
       <input
         type="submit"
-        id="btnConfirm"
+        id="btnSend"
         class="btn btn-lg btn-primary"
         value="Confirm"
-        (click)="confirm()"
       />
     </form>
   </div>

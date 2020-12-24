@@ -4,12 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CamundaService } from '../services/camunda.service';
 
 @Component({
-  selector: 'app-read-receipt',
-  templateUrl: './read-receipt.component.html',
-  styleUrls: ['./read-receipt.component.css']
+  selector: 'app-confirm-payment',
+  templateUrl: './confirm-payment.component.html',
+  styleUrls: ['./confirm-payment.component.css']
 })
-export class ReadReceiptComponent implements OnInit {
-
+export class ConfirmPaymentComponent implements OnInit {
+  
   camundaService: CamundaService;
   router: Router;
   formFieldsDto = [];
@@ -17,17 +17,20 @@ export class ReadReceiptComponent implements OnInit {
   processInstance = "";
   currentTaskId = "";
 
-  constructor(private service: CamundaService, private activatedRoute: ActivatedRoute, private routerr: Router) { 
-
+  constructor(
+    private service: CamundaService,
+    private activatedRoute: ActivatedRoute,
+    private routerr: Router
+  ) {
     this.camundaService = service;
     this.router = routerr;
 
-    this.activatedRoute.params.subscribe(params => {
+    this.activatedRoute.params.subscribe((params) => {
       this.currentTaskId = params["taskId"];
     });
 
     let x = this.camundaService.getTask(this.currentTaskId).subscribe(
-      res => {
+      (res) => {
         this.formFieldsDto = res;
         this.formFields = res.formField;
         this.processInstance = res.processInstanceId;
@@ -39,12 +42,18 @@ export class ReadReceiptComponent implements OnInit {
     );
   }
 
-  confirm() {
+  confirm(data: any, form: NgForm) {
   
-    debugger
-   
+    this.camundaService.confirmPayment(this.currentTaskId).subscribe(
+      (res) => {
+        this.router.navigate(["home"]);
+      },
+      (error) => {
+        console.log("Error occured " + error.message);
+      }
+    );
   }
-
+  
   ngOnInit() {
   }
 

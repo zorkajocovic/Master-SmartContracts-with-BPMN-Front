@@ -55,10 +55,10 @@ export class HomeComponent implements OnInit {
     else if(task.name == "Confirm that you have read a receipt"){
       this.router.navigate(['read-receipt/'.concat(task.taskId)]);
     }
-    else if(task.name == "Send car documents via email"){
+    else if(task.name == "Send documents"){
       this.router.navigate(['send-documents/'.concat(task.taskId)]);
     }
-    else if(task.name == "Send car receipt"){
+    else if(task.name == "Send receipt"){
       this.router.navigate(['send-receipt/'.concat(task.taskId)]);
     }
     else if(task.name == "Start payment transaction"){
@@ -66,6 +66,12 @@ export class HomeComponent implements OnInit {
     }
     else if(task.name == "Pick up a car"){
       this.router.navigate(['pickup-car/'.concat(task.taskId)]);
+    }
+     else if(task.name == "Confirm client's payment"){
+      this.router.navigate(['confirm-payment/'.concat(task.taskId)]);
+    }
+    else if(task.name == "Car is ready"){
+      this.router.navigate(['ready-car/'.concat(task.taskId)]);
     }
   }
 

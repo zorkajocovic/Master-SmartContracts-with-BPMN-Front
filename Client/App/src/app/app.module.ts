@@ -22,9 +22,13 @@ import { SendDocumentsComponent } from './send-documents/send-documents.componen
 import { SendReceiptComponent } from './send-receipt/send-receipt.component';
 import { HandOverCarComponent } from './hand-over-car/hand-over-car.component';
 import { DeliverCarComponent } from './deliver-car/deliver-car.component';
-import { ReadDocumentsComponent } from './read-documents/read-documents.component';
 import { ReadReceiptComponent } from './read-receipt/read-receipt.component';
 import { PayComponentComponent } from './pay-component/pay-component.component';
+import { ConfirmPaymentComponent } from './confirm-payment/confirm-payment.component';
+import { ReadyCarComponent } from './ready-car/ready-car.component';
+import { CarCheckComponent } from './car-check/car-check.component';
+import { ReturnCarComponent } from './return-car/return-car.component';
+import { DamagePriceComponent } from './damage-price/damage-price.component';
 
 const Routes = [
   {
@@ -46,10 +50,6 @@ const Routes = [
   {
     component: ReadOfferComponent,
     path: "read-offer/:taskId"
-  },
-  {
-    component: ReadDocumentsComponent,
-    path: "read-documents/:taskId"
   },
   {
     component: ReadReceiptComponent,
@@ -76,8 +76,16 @@ const Routes = [
     path: "handover-car/:taskId"
   },
   {
+    component: ReadyCarComponent,
+    path: "ready-car/:taskId"
+  },
+  {
     component: DeliverCarComponent,
     path: "pickup-car/:taskId"
+  },
+  {
+    component: ConfirmPaymentComponent,
+    path: "confirm-payment/:taskId"
   }
 ];
 
@@ -96,9 +104,13 @@ const Routes = [
     SendReceiptComponent,
     HandOverCarComponent,
     DeliverCarComponent,
-    ReadDocumentsComponent,
     ReadReceiptComponent,
-    PayComponentComponent
+    PayComponentComponent,
+    ConfirmPaymentComponent,
+    ReadyCarComponent,
+    CarCheckComponent,
+    ReturnCarComponent,
+    DamagePriceComponent
   ],
   imports: [
     BrowserModule,

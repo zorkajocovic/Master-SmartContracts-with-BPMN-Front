@@ -12,7 +12,7 @@
             type="text"
             class="form-control"
             name="{{ field.id }}"
-            *ngIf="field.id != 'contractText' && field.id != 'price'"
+            *ngIf="field.id != 'contractText' && field.id != 'price' && field.id != 'deposit'"
             value="{{ field.value.value }}"
             readonly
           />
@@ -20,7 +20,7 @@
             type="text"
             class="form-control"
             name="{{ field.id }}"
-            *ngIf="field.id == 'contractText' || field.id == 'price'"
+            *ngIf="field.id == 'contractText' || field.id == 'price' || field.id == 'deposit'"
             ngModel
           />
         </div>

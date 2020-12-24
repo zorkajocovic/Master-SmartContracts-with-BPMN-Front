@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   }
   
   logIn(user: LoginRequestDto, form: NgForm) {
-    debugger
     this.logService.getTheToken(user);
     form.reset();
   }

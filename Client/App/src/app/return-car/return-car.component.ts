@@ -4,11 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CamundaService } from '../services/camunda.service';
 
 @Component({
-  selector: 'app-read-receipt',
-  templateUrl: './read-receipt.component.html',
-  styleUrls: ['./read-receipt.component.css']
+  selector: 'app-return-car',
+  templateUrl: './return-car.component.html',
+  styleUrls: ['./return-car.component.css']
 })
-export class ReadReceiptComponent implements OnInit {
+export class ReturnCarComponent implements OnInit {
+
 
   camundaService: CamundaService;
   router: Router;
@@ -39,12 +40,20 @@ export class ReadReceiptComponent implements OnInit {
     );
   }
 
-  confirm() {
-  
-    debugger
-   
+  send(data: any, form: NgForm) {
+    var isSent = 0;
+    if (data["returned"] == "") isSent = 0;
+    else isSent = 1;
+    
+    this.camundaService.returnCar(this.currentTaskId, isSent).subscribe(
+      (res) => {
+        this.router.navigate(["home"]);
+      },
+      (error) => {
+        console.log("Error occured " + error.message);
+      }
+    );
   }
-
   ngOnInit() {
   }
 

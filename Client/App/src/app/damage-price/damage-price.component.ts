@@ -4,11 +4,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CamundaService } from '../services/camunda.service';
 
 @Component({
-  selector: 'app-read-receipt',
-  templateUrl: './read-receipt.component.html',
-  styleUrls: ['./read-receipt.component.css']
+  selector: 'app-damage-price',
+  templateUrl: './damage-price.component.html',
+  styleUrls: ['./damage-price.component.css']
 })
-export class ReadReceiptComponent implements OnInit {
+export class DamagePriceComponent implements OnInit {
 
   camundaService: CamundaService;
   router: Router;
@@ -17,17 +17,20 @@ export class ReadReceiptComponent implements OnInit {
   processInstance = "";
   currentTaskId = "";
 
-  constructor(private service: CamundaService, private activatedRoute: ActivatedRoute, private routerr: Router) { 
-
+  constructor(
+    private service: CamundaService,
+    private activatedRoute: ActivatedRoute,
+    private routerr: Router
+  ) {
     this.camundaService = service;
     this.router = routerr;
 
-    this.activatedRoute.params.subscribe(params => {
+    this.activatedRoute.params.subscribe((params) => {
       this.currentTaskId = params["taskId"];
     });
 
     let x = this.camundaService.getTask(this.currentTaskId).subscribe(
-      res => {
+      (res) => {
         this.formFieldsDto = res;
         this.formFields = res.formField;
         this.processInstance = res.processInstanceId;
@@ -39,12 +42,18 @@ export class ReadReceiptComponent implements OnInit {
     );
   }
 
-  confirm() {
+  confirm(damagePrice: any, form: NgForm) {
   
-    debugger
-   
+    this.camundaService.calcDamagePrice(this.currentTaskId, damagePrice).subscribe(
+      (res) => {
+        this.router.navigate(["home"]);
+      },
+      (error) => {
+        console.log("Error occured " + error.message);
+      }
+    );
   }
-
+  
   ngOnInit() {
   }
 

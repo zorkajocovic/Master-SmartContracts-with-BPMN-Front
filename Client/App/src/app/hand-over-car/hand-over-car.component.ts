@@ -46,7 +46,7 @@ export class HandOverCarComponent implements OnInit {
     if (data["sendCar"] == "") isSent = 0;
     else isSent = 1;
     
-    this.camundaService.handOver(this.currentTaskId, isSent).subscribe(
+    this.camundaService.sendCar(this.currentTaskId, isSent).subscribe(
       () => {
         alert("You sent a car!");
         this.router.navigate(["home"]);
